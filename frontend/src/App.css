@@ -1,0 +1,72 @@
+@import url(https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css);
+
+:root {
+  --pico-form-element-spacing-vertical: 5px;
+  --pico-form-element-spacing-horizontal: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.container > form {
+  max-width: 300px;
+}
+
+.container > main {
+  flex: 1;
+}
+
+.delete-btn {
+  margin-top: 0.5rem;
+}
+
+form.new-topic input[type="text"] {
+  margin-bottom: calc(var(--pico-spacing) / 2);
+}
+
+.topic-btns {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.topic-btns button {
+  width: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+body, #root, .container {
+  height: 100%;
+}
+
+@media screen and (min-width: 400px) {
+  .topic-btns {
+    flex-direction: row;
+  }
+
+  .topic-btns button {
+    margin: 0;
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    flex-direction: row;
+  }
+
+  aside {
+    border-right: 1px solid var(--pico-form-element-border-color);
+    padding-right: var(--pico-spacing);
+  }
+}
