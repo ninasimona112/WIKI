@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import Topic from "./TopicModel.js";
+import Topic from "./topicModel.js";
 
 const app = express();
 
