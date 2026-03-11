@@ -25,7 +25,7 @@ export const NewTopic = () => {
         content: content.trim(),
       });
 
-      // შექმნის შემდეგ დაბრუნება მთავარ გვერდზე (შენთან ესაა /entries)
+
       navigate("/entries");
     } catch (err) {
       setError(err?.response?.data?.message || "შეცდომა topic-ის შექმნისას");
