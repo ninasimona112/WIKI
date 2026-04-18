@@ -8,13 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB დაკავშირება
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/wiki")
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
-// იღებს topic და content-ს და ამატებს MongoDB-ში
+
 app.post("/topic", async (req, res) => {
   try {
     const { topic, content } = req.body;
@@ -38,7 +38,7 @@ app.post("/topic", async (req, res) => {
   }
 });
 
-// აბრუნებს ყველა Topic-ს MongoDB-დან
+
 app.get("/topics", async (req, res) => {
   try {
     const topics = await Topic.find();
@@ -50,7 +50,22 @@ app.get("/topics", async (req, res) => {
   }
 });
 
-// Server start
+
+app.get("/entries/:topicId", async (req, res) => {
+  try {
+    const topic = await Topic.findById(req.params.topicId);
+    if (!topic) {
+      return res.status(404).json({ message: "Topic not found" });
+    }
+    res.json(topic);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching topic", error: error.message });
+  }
+});
+
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });

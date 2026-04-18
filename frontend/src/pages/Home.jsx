@@ -32,7 +32,8 @@ export const Home = () => {
       <ul>
         {topics.map((item) => (
           <li key={item._id}>
-            <Link to={`/entries/${item._id}`}>{item.topic}</Link>
+            <Link to={`/entries/${item._id}`}>{item.title}</Link>
+            {/* <p>{item.content}</p> */}
           </li>
         ))}
       </ul>
